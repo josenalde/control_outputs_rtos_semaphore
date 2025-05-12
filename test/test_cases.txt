@@ -1,0 +1,17 @@
+CASOS DE TESTE: considerando frequências diferentes 500 e 300
+--------------
+teste1: mesma prioridade, mesmo núcleo, sem vTaskDelay nas tasks, sem semaforo
+Observações:
+
+teste2: prioridade diferentes, mesmo núcleo, com vTaskDelay de 1 TICK na task de maior prioridade, sem semaforo
+Observações:
+
+teste3: mesma prioridade, mesmo núcleo, com semaforo binario, sem vTaskDelay nas tasks
+Observações:
+
+teste4: mesma prioridade, mesmo núcleo, com semaforo binario, com vTaskDelay (1 tick min) nas tasks
+Observações: deste delay depende dos prints seriais que existem na task (testar 10 ticks caso não funcione)
+
+teste5: similar ao anterior, porém com prioridades diferentes e vTaskDelay apenas na de maior prioridade 
+
+
