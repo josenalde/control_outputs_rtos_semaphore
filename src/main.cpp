@@ -20,7 +20,7 @@ SemaphoreHandle_t mutex = NULL; //semáforo
 void toggleLED_1(void *parameter) {
   TaskStatus_t xTaskDetails;
   TaskHandle_t xHandle;
-  xHandle = xTaskGetHandle("t1");
+  xHandle = xTaskGetHandle("task1");
   vTaskGetInfo(xHandle, &xTaskDetails, pdTRUE, eInvalid );
   Serial.printf("%s no nucleo %d com prioridade %d\n", xTaskDetails.pcTaskName, xPortGetCoreID(), uxTaskPriorityGet(xHandle));
   while(1) {
@@ -40,7 +40,7 @@ void toggleLED_1(void *parameter) {
 void toggleLED_2(void *parameter) {
   TaskStatus_t xTaskDetails;
   TaskHandle_t xHandle;
-  xHandle = xTaskGetHandle("t2");
+  xHandle = xTaskGetHandle("task2");
   vTaskGetInfo(xHandle, &xTaskDetails, pdTRUE, eInvalid );
   Serial.printf("%s no nucleo %d com prioridade %d\n", xTaskDetails.pcTaskName, xPortGetCoreID(), uxTaskPriorityGet(xHandle));
   while(1) {
@@ -76,7 +76,7 @@ void setup() {
   // Tarefas em loop infinito
   xTaskCreatePinnedToCore(  // Use xTaskCreate() in vanilla FreeRTOS
               toggleLED_1,  // função a ser chamada
-              "t1",   // nome da task
+              "task1",   // nome da task
               4096,         // tamanho em bytes
               NULL,         // parâmetros a passar a função
               3,            // Prioridade (0 a configMAX_PRIORITIES - 1)
@@ -86,7 +86,7 @@ void setup() {
   // Tarefas em loop infinito
   xTaskCreatePinnedToCore(  
               toggleLED_2,  
-              "t2",   
+              "task2",   
               4096,         
               NULL,         
               1,            
